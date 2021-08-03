@@ -8,10 +8,10 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.countHour}>
         <View style={styles.countHourTitle}>
-          <Text style={{fontSize: 20}}>駐車時間</Text>
+          <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車時間</Text>
         </View>
         <View style={styles.countHourMinutes}>
-          <Text style={{fontSize: 40}}>
+          <Text style={{fontSize: 40, color: '#EEEEEE'}}>
             20時間30分 <Icon name="repeat" size={40} />
           </Text>
         </View>
@@ -164,7 +164,7 @@ export default function App() {
         
       </View>
       <View style={styles.parkingInformation}>
-        <Text style={{fontSize: 20}}>駐車場所：2F 35</Text>
+        <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車場所：2F 35</Text>
       </View>
     </View>
   );
@@ -176,11 +176,12 @@ const styles = StyleSheet.create({
   },
   countHour: {
     flex: 2,
+    backgroundColor: '#222222'
   },
   countHourTitle: {
     flex: 1,
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   countHourMinutes: {
     flex: 2,
@@ -189,19 +190,20 @@ const styles = StyleSheet.create({
   },
   parkingMap: {
     flex: 5,
+    backgroundColor: '#555555'
   },
   mapRow: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'whitesmoke'
   },
   mapButton: {
     flex: 1,
-    backgroundColor: "lightblue",
+    backgroundColor: "#EEEEEE",
+    borderRadius: 5,
+    overflow: 'hidden',
     padding: 10,
     margin: 1,
     borderWidth: 1,
-    borderColor: "lightblue",
   },
   mapButtonHidden: {
     flex: 1,
@@ -215,6 +217,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#222222'
   }
   
 });
