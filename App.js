@@ -21,10 +21,10 @@ export default function App() {
         {/* 1行目 */}
           <Text style={styles.mapButton} onPress={() => {console.log('aiueo')}}>01</Text>
           <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
+          <Text style={styles.mapButton}>01</Text>
+          <Text style={styles.mapButton}>01</Text>
+          <Text style={styles.mapButton}>01</Text>
+          <Text style={styles.mapButton}>01</Text>
           <Text style={styles.mapButtonHidden}>01</Text>
           <Text style={styles.mapButtonHidden}>01</Text>
         </View>
@@ -32,10 +32,10 @@ export default function App() {
         {/* 2行目 */}
           <Text style={styles.mapButton}>01</Text>
           <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
+          <Text style={styles.mapButtonHidden}>01</Text>
+          <Text style={styles.mapButtonHidden}>01</Text>
+          <Text style={styles.mapButtonHidden}>01</Text>
+          <Text style={styles.mapButtonHidden}>01</Text>
           <Text style={styles.mapButtonHidden}>01</Text>
           <Text style={styles.mapButtonHidden}>01</Text>
         </View>
@@ -160,8 +160,10 @@ export default function App() {
           <Text style={styles.mapButtonHidden}>01</Text>
           <Text style={styles.mapButtonHidden}>01</Text>
         </View>
-
-        
+      </View>
+      <View style={styles.floorLevelTabWrapper}>
+        <View style={styles.levelTab}><Text>3F</Text></View>
+        <View style={styles.levelTab}><Text>2F</Text></View>
       </View>
       <View style={styles.parkingInformation}>
         <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車場所：2F 35</Text>
@@ -190,7 +192,8 @@ const styles = StyleSheet.create({
   },
   parkingMap: {
     flex: 5,
-    backgroundColor: '#555555'
+    padding: 5,
+    backgroundColor: '#444444'
   },
   mapRow: {
     flex: 1,
@@ -213,8 +216,21 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     opacity: 0
   },
+  floorLevelTabWrapper: {
+    flex: 0.3,
+    flexDirection: 'row-reverse',
+    backgroundColor: '#222222'
+  },
+  levelTab: {
+    backgroundColor: "#EEEEEE",
+    width: 80,
+    marginRight: 5,
+    overflow: 'hidden',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
   parkingInformation: {
-    flex: 1,
+    flex: 0.7,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#222222'
