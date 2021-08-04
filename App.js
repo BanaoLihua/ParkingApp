@@ -7,6 +7,11 @@ import Map2nd from './src/map2nd';
 import Map3rd from './src/map3rd';
 
 export default function App() {
+
+  const [selectedMap, setSelectedMap] = useState(2);
+
+  const [selectedModalMap, setSelectedModalMap] = useState(2);
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const openModal = () => {
@@ -16,6 +21,160 @@ export default function App() {
   const closeModal = () => {
     setIsModalVisible(false);
   }
+
+  // Tab (冗長なので後で修正)
+
+  const tabBackgroundColor2 = () => {
+    switch(selectedMap) {
+      case 2:
+        return '#00a7f3';
+      case 3:
+        return '#EEEEEE';
+    }
+  }
+  const tabBackgroundColor3 = () => {
+    switch(selectedMap) {
+      case 2:
+        return '#EEEEEE';
+      case 3:
+        return '#00a7f3';
+    }
+  }
+
+  const tabStyle2 = () => {
+    return{
+      backgroundColor: tabBackgroundColor2(),
+      width: 80,
+      marginRight: 5,
+      overflow: 'hidden',
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
+    }
+  }
+
+  const tabStyle3 = () => {
+    return{
+      backgroundColor: tabBackgroundColor3(),
+      width: 80,
+      marginRight: 5,
+      overflow: 'hidden',
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
+    }
+  }
+
+  const tabTextColor2 = () => {
+    switch(selectedMap) {
+      case 2:
+        return '#EEEEEE';
+      case 3:
+        return '#222222';
+    }
+  }
+
+  const tabTextColor3 = () => {
+    switch(selectedMap) {
+      case 2:
+        return '#222222';
+      case 3:
+        return '#EEEEEE';
+    }
+  }
+
+  const tabTextStyle2 = () => {
+    return {
+      textAlign: 'center',
+      fontSize: 20,
+      color: tabTextColor2(),
+    }
+  }
+
+  const tabTextStyle3 = () => {
+    return {
+      textAlign: 'center',
+      fontSize: 20,
+      color: tabTextColor3(),
+    }
+  }
+
+  // Tab (end)
+
+  // Modal tab
+
+  const modalTabBackgroundColor2 = () => {
+    switch(selectedModalMap) {
+      case 2:
+        return '#00a7f3';
+      case 3:
+        return '#EEEEEE';
+    }
+  }
+  const modalTabBackgroundColor3 = () => {
+    switch(selectedModalMap) {
+      case 2:
+        return '#EEEEEE';
+      case 3:
+        return '#00a7f3';
+    }
+  }
+
+  const modalTabTextColor2 = () => {
+    switch(selectedModalMap) {
+      case 2:
+        return '#EEEEEE';
+      case 3:
+        return '#222222';
+    }
+  }
+
+  const modalTabTextColor3 = () => {
+    switch(selectedModalMap) {
+      case 2:
+        return '#222222';
+      case 3:
+        return '#EEEEEE';
+    }
+  }
+
+  const modalTabStyle2 = () => {
+    return{
+      backgroundColor: modalTabBackgroundColor2(),
+      width: 80,
+      marginRight: 5,
+      overflow: 'hidden',
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
+    }
+  }
+
+  const modalTabStyle3 = () => {
+    return{
+      backgroundColor: modalTabBackgroundColor3(),
+      width: 80,
+      marginRight: 5,
+      overflow: 'hidden',
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
+    }
+  }
+
+  const modalTabTextStyle2 = () => {
+    return {
+      textAlign: 'center',
+      fontSize: 20,
+      color: modalTabTextColor2(),
+    }
+  }
+
+  const modalTabTextStyle3 = () => {
+    return {
+      textAlign: 'center',
+      fontSize: 20,
+      color: modalTabTextColor3(),
+    }
+  }
+
+  // modal tab (end)
 
   return (
     <View style={styles.container}>
@@ -30,11 +189,16 @@ export default function App() {
         </View>
       </View>
 
-      <Map2nd />
+      {(selectedMap === 2) && <Map2nd />}
+      {(selectedMap === 3) && <Map3rd />}
       
       <View style={styles.floorLevelTabWrapper}>
-        <View style={styles.levelTab}><Text>3F</Text></View>
-        <View style={styles.levelTab}><Text>2F</Text></View>
+        <TouchableOpacity style={tabStyle3()} onPress={() => {setSelectedMap(3)}}>
+          <Text style={tabTextStyle3()}>3F</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={tabStyle2()} onPress={() => {setSelectedMap(2)}}>
+          <Text style={tabTextStyle2()}>2F</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.parkingInformation}>
         <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車場所：2F 35</Text>
@@ -45,13 +209,19 @@ export default function App() {
           <View style={styles.modalParkingTime}>
             <Text style={styles.modalParkingTimeText}>08/03 20:38</Text>
           </View>
-          
-          <Map2nd />
 
           <View style={styles.modalParkingTabWrapper}>
-              <View style={styles.modalParkingTabs}><Text>3F</Text></View>
-              <View style={styles.modalParkingTabs}><Text>2F</Text></View>
+              <TouchableOpacity style={modalTabStyle3()} onPress={() => {setSelectedModalMap(3)}}>
+                <Text style={modalTabTextStyle3()}>3F</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={modalTabStyle2()} onPress={() => {setSelectedModalMap(2)}}>
+                <Text style={modalTabTextStyle2()}>2F</Text>
+              </TouchableOpacity>
           </View>
+          
+          {(selectedModalMap === 2) && <Map2nd />}
+          {(selectedModalMap === 3) && <Map3rd />}
+
           <View style={styles.modalButtonsWrapper}>
             <TouchableOpacity onPress={closeModal} style={styles.modalButtonCancel}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>取消</Text>
@@ -110,7 +280,7 @@ const styles = StyleSheet.create({
     borderRadius: 15
   },
   modalParkingTime: {
-    flex: 1,
+    flex: 0.5,
   },
   modalParkingTimeText: {
     textAlign: 'center',
@@ -118,7 +288,7 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   modalParkingTabWrapper: {
-    flex: 0.5,
+    flex: 0.3,
     flexDirection: 'row-reverse',
   },
   modalParkingTabs: {
@@ -126,12 +296,13 @@ const styles = StyleSheet.create({
     width: 80,
     marginRight: 5,
     overflow: 'hidden',
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   modalButtonsWrapper: {
     flexDirection: 'row',
-    flex: 1,
+    flex: 0.8,
+    marginTop: 10,
     alignContent: 'center',
     justifyContent: 'center'
   },
