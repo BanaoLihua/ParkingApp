@@ -1,9 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Modal from 'react-native-modal';
+import Map2nd from './src/map2nd';
+import Map3rd from './src/map3rd';
 
 export default function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const openModal = () => {
+    setIsModalVisible(true);
+  }
+
+  const closeModal = () => {
+    setIsModalVisible(false);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.countHour}>
@@ -12,155 +25,13 @@ export default function App() {
         </View>
         <View style={styles.countHourMinutes}>
           <Text style={{fontSize: 40, color: '#EEEEEE'}}>
-            20時間30分 <Icon name="repeat" size={40} />
+            20時間30分 <Icon name="repeat" size={40} onPress={openModal} />
           </Text>
         </View>
       </View>
-      <View style={styles.parkingMap}>
-        <View style={styles.mapRow}>
-        {/* 1行目 */}
-          <Text style={styles.mapButton} onPress={() => {console.log('aiueo')}}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-        {/* 2行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 3行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 4行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 5行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 6行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 7行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButton}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 8行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 9行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 10行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 11行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 12行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-        </View>
-        <View style={styles.mapRow}>
-          {/* 13行目 */}
-          <Text style={styles.mapButton}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-          <Text style={styles.mapButtonHidden}>01</Text>
-        </View>
-      </View>
+
+      <Map2nd />
+      
       <View style={styles.floorLevelTabWrapper}>
         <View style={styles.levelTab}><Text>3F</Text></View>
         <View style={styles.levelTab}><Text>2F</Text></View>
@@ -168,6 +39,29 @@ export default function App() {
       <View style={styles.parkingInformation}>
         <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車場所：2F 35</Text>
       </View>
+
+      <Modal isVisible={isModalVisible} hasBackdrop={true}>
+        <View style={styles.modalWrapper}>
+          <View style={styles.modalParkingTime}>
+            <Text style={styles.modalParkingTimeText}>08/03 20:38</Text>
+          </View>
+          
+          <Map2nd />
+
+          <View style={styles.modalParkingTabWrapper}>
+              <View style={styles.modalParkingTabs}><Text>3F</Text></View>
+              <View style={styles.modalParkingTabs}><Text>2F</Text></View>
+          </View>
+          <View style={styles.modalButtonsWrapper}>
+            <TouchableOpacity onPress={closeModal} style={styles.modalButtonCancel}>
+              <Text style={{color: '#EEEEEE', fontSize: 20,}}>取消</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.modalButtonSubmit}>
+              <Text style={{color: '#EEEEEE', fontSize: 20,}}>更新</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -190,32 +84,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  parkingMap: {
-    flex: 5,
-    padding: 5,
-    backgroundColor: '#444444'
-  },
-  mapRow: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  mapButton: {
-    flex: 1,
-    backgroundColor: "#EEEEEE",
-    borderRadius: 5,
-    overflow: 'hidden',
-    padding: 10,
-    margin: 1,
-    borderWidth: 1,
-  },
-  mapButtonHidden: {
-    flex: 1,
-    padding: 10,
-    margin: 1,
-    borderRadius: 20,
-    borderWidth: 1,
-    opacity: 0
-  },
   floorLevelTabWrapper: {
     flex: 0.3,
     flexDirection: 'row-reverse',
@@ -234,6 +102,58 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#222222'
+  },
+  modalWrapper: {
+    height: '90%',
+    padding: 3,
+    backgroundColor: '#333333',
+    borderRadius: 15
+  },
+  modalParkingTime: {
+    flex: 1,
+  },
+  modalParkingTimeText: {
+    textAlign: 'center',
+    color: '#EEEEEE',
+    fontSize: 30
+  },
+  modalParkingTabWrapper: {
+    flex: 0.5,
+    flexDirection: 'row-reverse',
+  },
+  modalParkingTabs: {
+    backgroundColor: "#EEEEEE",
+    width: 80,
+    marginRight: 5,
+    overflow: 'hidden',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  modalButtonsWrapper: {
+    flexDirection: 'row',
+    flex: 1,
+    alignContent: 'center',
+    justifyContent: 'center'
+  },
+  modalButtonCancel: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#97999d",
+    borderRadius: 5,
+    overflow: 'hidden',
+    padding: 1,
+    margin: 5,
+  },
+  modalButtonSubmit: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#00a7f3",
+    borderRadius: 5,
+    overflow: 'hidden',
+    padding: 1,
+    margin: 5,
   }
   
 });
