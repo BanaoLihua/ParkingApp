@@ -1,151 +1,152 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-export default function Map3rd() {
+export default function Map3rd(props) {
+
     return(
-      <View style={styles.parkingMap}>
+        <View style={styles.parkingMap}>
         <View style={styles.mapRow}>
-        {/* 1行目 */}
-          <Text style={styles.mapButton} onPress={() => {console.log('aiueo')}}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
+          {/* 1行目 */}
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
-        {/* 2行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
+          {/* 2行目 */}
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
-          {/* 3行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
+        {/* 3行目 */}
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
-          {/* 4行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
+        {/* 4行目 */}
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 5行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>00</Text>
         </View>
         <View style={styles.mapRow}>
           {/* 6行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>00</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>05</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>33</Text>
         </View>
         <View style={styles.mapRow}>
           {/* 7行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButton}>03</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>00</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 8行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>00</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 9行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 10行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 11行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 12行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 13行目 */}
-          <Text style={styles.mapButton}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
-          <Text style={styles.mapButtonHidden}>03</Text>
+          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
+          <Text style={styles.spaceHidden}></Text>
         </View>
       </View>
     )
@@ -161,16 +162,26 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
       },
-      mapButton: {
+      space: {
         flex: 1,
         backgroundColor: "#EEEEEE",
         borderRadius: 5,
         overflow: 'hidden',
         padding: 10,
         margin: 1,
-        borderWidth: 1,
+        textAlign: 'center'
       },
-      mapButtonHidden: {
+      spaceSelected: {
+        flex: 1,
+        backgroundColor: "#2cc46c",
+        color: '#EEEEEE',
+        borderRadius: 5,
+        overflow: 'hidden',
+        padding: 10,
+        margin: 1,
+        textAlign: 'center'
+      },
+      spaceHidden: {
         flex: 1,
         padding: 10,
         margin: 1,

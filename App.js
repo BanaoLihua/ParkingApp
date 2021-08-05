@@ -10,6 +10,8 @@ export default function App() {
 
   const [selectedMap, setSelectedMap] = useState(2);
 
+  const [selectedSpace, setSelectedSpace] = useState('06')
+
   const [selectedModalMap, setSelectedModalMap] = useState(2);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -189,8 +191,8 @@ export default function App() {
         </View>
       </View>
 
-      {(selectedMap === 2) && <Map2nd />}
-      {(selectedMap === 3) && <Map3rd />}
+      {(selectedMap === 2) && <Map2nd selected={selectedSpace} />}
+      {(selectedMap === 3) && <Map3rd selected={selectedSpace} />}
       
       <View style={styles.floorLevelTabWrapper}>
         <TouchableOpacity style={tabStyle3()} onPress={() => {setSelectedMap(3)}}>
