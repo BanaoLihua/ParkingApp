@@ -11,7 +11,9 @@ export default function App() {
 
   const [selectedMap, setSelectedMap] = useState(2);
 
-  const [selectedSpace, setSelectedSpace] = useState('06');
+  const [parkingSpace, setParkingSpace] = useState('41');
+
+  const [parkingFloor, setParkingFloor] = useState('2');
 
   const [datetime, setDatetime] = useState(new Date());
 
@@ -79,8 +81,8 @@ export default function App() {
         </View>
       </View>
 
-      {(selectedMap === 2) && <Map2nd selected={selectedSpace} />}
-      {(selectedMap === 3) && <Map3rd selected={selectedSpace} />}
+      {(selectedMap === 2) && <Map2nd parkingFloor={parkingFloor} parkingSpace={parkingSpace} />}
+      {(selectedMap === 3) && <Map3rd parkingFloor={parkingFloor} parkingSpace={parkingSpace} />}
       
       <View style={styles.floorLevelTabWrapper}>
         <TouchableOpacity style={(selectedMap === 3) ? styles.levelTabSelected : styles.levelTab} onPress={() => {setSelectedMap(3)}}>
@@ -91,7 +93,7 @@ export default function App() {
         </TouchableOpacity>
       </View>
       <View style={styles.parkingInformation}>
-        <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車場所：2F 35</Text>
+        <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車場所：{parkingFloor}F {parkingSpace}</Text>
       </View>
 
       <Modal isVisible={isModalVisible} hasBackdrop={true}>

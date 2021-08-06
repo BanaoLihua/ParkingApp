@@ -7,7 +7,7 @@ export default function Map3rd(props) {
         <View style={styles.parkingMap}>
         <View style={styles.mapRow}>
           {/* 1行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
@@ -18,7 +18,7 @@ export default function Map3rd(props) {
         </View>
         <View style={styles.mapRow}>
           {/* 2行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
@@ -29,73 +29,73 @@ export default function Map3rd(props) {
         </View>
         <View style={styles.mapRow}>
         {/* 3行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
         {/* 4行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 5行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}></Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}></Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>00</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>00</Text>
         </View>
         <View style={styles.mapRow}>
           {/* 6行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>00</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>00</Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>05</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>05</Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>33</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>33</Text>
         </View>
         <View style={styles.mapRow}>
           {/* 7行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>00</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>00</Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}></Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}></Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 8行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>00</Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}></Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>00</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}></Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 9行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
@@ -106,7 +106,7 @@ export default function Map3rd(props) {
         </View>
         <View style={styles.mapRow}>
           {/* 10行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
@@ -117,18 +117,18 @@ export default function Map3rd(props) {
         </View>
         <View style={styles.mapRow}>
           {/* 11行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
         </View>
         <View style={styles.mapRow}>
           {/* 12行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
@@ -139,7 +139,7 @@ export default function Map3rd(props) {
         </View>
         <View style={styles.mapRow}>
           {/* 13行目 */}
-          <Text style={(props.selected === '01') ? styles.spaceSelected : styles.space}>01</Text>
+          <Text style={((props.parkingFloor === '3') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
