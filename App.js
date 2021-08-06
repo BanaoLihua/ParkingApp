@@ -5,14 +5,30 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Modal from 'react-native-modal';
 import Map2nd from './src/map2nd';
 import Map3rd from './src/map3rd';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export default function App() {
 
   const [selectedMap, setSelectedMap] = useState(2);
 
-  const [selectedSpace, setSelectedSpace] = useState('06')
+  const [selectedSpace, setSelectedSpace] = useState('06');
+
+  const [datetime, setDatetime] = useState(new Date());
+
+  const [newDatetime, setNewDateTime] = useState(new Date());
+
+  const [modalDatetime, setModalDatetime] = useState(fromDateToString(new Date()));
 
   const [selectedModalMap, setSelectedModalMap] = useState(2);
+
+  function fromDateToString(datetime) {
+    const month = 1 + datetime.getMonth();
+    const day = datetime.getDate();
+    const hour = datetime.getHours();
+    const minute = datetime.getMinutes();
+    const strMDHM = `${month}月${day}日${hour}時${minute}分`;
+    return strMDHM;
+  }
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -24,15 +40,41 @@ export default function App() {
     setIsModalVisible(false);
   }
 
+  const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
+
+  const showDatePicker = () => {
+    setIsDatePickerVisible(true);
+  }
+
+  const closeDatePicker = () => {
+    setIsDatePickerVisible(false);
+  }
+
+  const handleConfirm = datetime => {
+    setModalDatetime(fromDateToString(datetime));
+    setNewDateTime(datetime);
+    closeDatePicker();
+  }
+
+  const getElapsedTime = () => {
+    const now = new Date();
+    const diff = now - datetime;
+    const diffMinutes = Math.floor(diff / (60 * 1000));
+    const hour = Math.floor(diffMinutes / 60);
+    const min = diffMinutes % 60;
+    const diffHourMinutes = `${hour}時間${min}分`
+    return diffHourMinutes;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.countHour}>
         <View style={styles.countHourTitle}>
-          <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車時間</Text>
+          <Text style={{fontSize: 20, color: '#EEEEEE'}} onPress={getElapsedTime}>駐車時間</Text>
         </View>
         <View style={styles.countHourMinutes}>
           <Text style={{fontSize: 40, color: '#EEEEEE'}}>
-            20時間30分 <Icon name="repeat" size={40} onPress={openModal} />
+            {getElapsedTime()} <Icon name="repeat" size={40} onPress={openModal} />
           </Text>
         </View>
       </View>
@@ -55,7 +97,7 @@ export default function App() {
       <Modal isVisible={isModalVisible} hasBackdrop={true}>
         <View style={styles.modalWrapper}>
           <View style={styles.modalParkingTime}>
-            <Text style={styles.modalParkingTimeText}>08/03 20:38</Text>
+            <Text style={styles.modalParkingTimeText}>{modalDatetime} <Icon name="edit" size={30} onPress={showDatePicker} /></Text>
           </View>
 
           <View style={styles.modalLevelTabWrapper}>
@@ -74,9 +116,20 @@ export default function App() {
             <TouchableOpacity onPress={closeModal} style={styles.modalButtonCancel}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>取消</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.modalButtonSubmit}>
+            <TouchableOpacity onPress={() => {setDatetime(newDatetime); closeModal()}} style={styles.modalButtonSubmit}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>更新</Text>
             </TouchableOpacity>
+
+            <DateTimePickerModal
+              isVisible={isDatePickerVisible}
+              mode="datetime"
+              onConfirm={handleConfirm}
+              onCancel={closeDatePicker}
+              isDarkModeEnabled={true}
+              cancelTextIOS={'取消'}
+              confirmTextIOS={'確定'}
+            />
+
           </View>
         </View>
       </Modal>
