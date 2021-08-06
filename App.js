@@ -40,6 +40,7 @@ export default function App() {
 
   const closeModal = () => {
     setIsModalVisible(false);
+    console.log(modalSelectingSpace)
   }
 
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
@@ -67,6 +68,8 @@ export default function App() {
     const diffHourMinutes = `${hour}時間${min}分`
     return diffHourMinutes;
   }
+
+  const [modalSelectingSpace, setModalSelectingSpace] = useState()
 
   return (
     <View style={styles.container}>
@@ -111,8 +114,8 @@ export default function App() {
               </TouchableOpacity>
           </View>
           
-          {(selectedModalMap === 2) && <Map2nd />}
-          {(selectedModalMap === 3) && <Map3rd />}
+          {(selectedModalMap === 2) && <Map2nd modal={true} setSelectingSpace={setModalSelectingSpace} selectingSpace={modalSelectingSpace} />}
+          {(selectedModalMap === 3) && <Map3rd modal={true} />}
 
           <View style={styles.modalButtonsWrapper}>
             <TouchableOpacity onPress={closeModal} style={styles.modalButtonCancel}>

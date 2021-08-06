@@ -3,13 +3,19 @@ import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default function Map2nd(props) {
 
+    const onPressSpace = number => {
+      if(props.modal) {
+        props.setSelectingSpace(number);
+      }
+    }
+
     return(
         <View style={styles.parkingMap}>
         <View style={styles.mapRow}>
         {/* 1行目 */}
-          <Text style={((props.parkingFloor === '2') && (props.parkingSpace === '42')) ? styles.spaceSelected : styles.space}>42</Text>
+          <Text onPress={() => {onPressSpace('42')}} style={((props.parkingFloor === '2') && (props.parkingSpace === '42') || (props.selectingSpace === '42')) ? styles.spaceSelected : styles.space}>42</Text>
           <Text style={styles.spaceHidden}></Text>
-          <Text style={((props.parkingFloor === '2') && (props.parkingSpace === '29')) ? styles.spaceSelected : styles.space}>29</Text>
+          <Text onPress={() => {onPressSpace('29')}} style={((props.parkingFloor === '2') && (props.parkingSpace === '29') || (props.selectingSpace === '29')) ? styles.spaceSelected : styles.space}>29</Text>
           <Text style={((props.parkingFloor === '2') && (props.parkingSpace === '28')) ? styles.spaceSelected : styles.space}>28</Text>
           <Text style={((props.parkingFloor === '2') && (props.parkingSpace === '27')) ? styles.spaceSelected : styles.space}>27</Text>
           <Text style={((props.parkingFloor === '2') && (props.parkingSpace === '26')) ? styles.spaceSelected : styles.space}>26</Text>
@@ -146,7 +152,7 @@ export default function Map2nd(props) {
           <Text style={styles.spaceHidden}></Text>
           <Text style={((props.parkingFloor === '2') && (props.parkingSpace === '03')) ? styles.spaceSelected : styles.space}>03</Text>
           <Text style={((props.parkingFloor === '2') && (props.parkingSpace === '02')) ? styles.spaceSelected : styles.space}>02</Text>
-          <Text style={((props.parkingFloor === '2') && (props.parkingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
+          <Text onPress={() => {onPressSpace('01')}} style={((props.parkingFloor === '2') && (props.parkingSpace === '01') || (props.selectingSpace === '01')) ? styles.spaceSelected : styles.space}>01</Text>
         </View>
       </View>
     )
