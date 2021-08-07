@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Modal from 'react-native-modal';
@@ -10,6 +10,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Storage from 'react-native-storage';
 
 export default function App() {
+
+  useEffect(() => {
+    storage.load({key: 'space'}).then(res => setParkingSpace(res));
+    storage.load({key: 'floor'}).then(res => setParkingFloor(res));
+  })
 
   const storage = new Storage({
     storageBackend: AsyncStorage,
@@ -26,7 +31,7 @@ export default function App() {
   const saveFloor = async () => {
     storage.save({
       key: 'floor',
-      data: selectedModalMap
+      data: selectedModalMap.toString()
     });
   }
 
@@ -37,18 +42,9 @@ export default function App() {
     });
   }
 
-  const loadData = async () => {
-    storage.load({key: 'space'})
-    .then(res => console.log(res));
-    storage.load({key: 'floor'})
-    .then(res => console.log(res));
-    storage.load({key: 'time'})
-    .then(res => console.log(res));
-  }
-
   const [selectedMap, setSelectedMap] = useState(2);
 
-  const [parkingSpace, setParkingSpace] = useState('41');
+  const [parkingSpace, setParkingSpace] = useState();
 
   const [parkingFloor, setParkingFloor] = useState('2');
 
@@ -132,7 +128,8 @@ export default function App() {
         </TouchableOpacity>
       </View>
       <View style={styles.parkingInformation}>
-        <Text style={{fontSize: 20, color: '#EEEEEE'}} onPress={loadData}>駐車場所：{parkingFloor}F {parkingSpace}</Text>
+        <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車場所：{parkingFloor}F {parkingSpace}</Text>
+        <Text style={{color: 'white'}}>TEST</Text>
       </View>
 
       <Modal isVisible={isModalVisible} hasBackdrop={true}>
@@ -142,16 +139,16 @@ export default function App() {
           </View>
 
           <View style={styles.modalLevelTabWrapper}>
-              <TouchableOpacity style={(selectedModalMap === 3) ? styles.modalLevelTabSelected : styles.modalLevelTab} onPress={() => {setSelectedModalMap(3)}}>
+              <TouchableOpacity style={(selectedModalMap === 3) ? styles.modalLevelTabSelected : styles.modalLevelTab} onPress={() => {setSelectedModalMap(3); setModalSelectingSpace()}}>
                 <Text style={(selectedModalMap === 3) ? styles.modalLevelTabTextSelected : styles.modalLevelTabText}>3F</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={(selectedModalMap === 2) ? styles.modalLevelTabSelected : styles.modalLevelTab} onPress={() => {setSelectedModalMap(2)}}>
+              <TouchableOpacity style={(selectedModalMap === 2) ? styles.modalLevelTabSelected : styles.modalLevelTab} onPress={() => {setSelectedModalMap(2); setModalSelectingSpace()}}>
                 <Text style={(selectedModalMap === 2) ? styles.modalLevelTabTextSelected : styles.modalLevelTabText}>2F</Text>
               </TouchableOpacity>
           </View>
           
           {(selectedModalMap === 2) && <Map2nd modal={true} setSelectingSpace={setModalSelectingSpace} selectingSpace={modalSelectingSpace} />}
-          {(selectedModalMap === 3) && <Map3rd modal={true} />}
+          {(selectedModalMap === 3) && <Map3rd modal={true} setSelectingSpace={setModalSelectingSpace} selectingSpace={modalSelectingSpace} />}
 
           <View style={styles.modalButtonsWrapper}>
             <TouchableOpacity onPress={closeModal} style={styles.modalButtonCancel}>
