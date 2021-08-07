@@ -6,8 +6,45 @@ import Modal from 'react-native-modal';
 import Map2nd from './src/map2nd';
 import Map3rd from './src/map3rd';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Storage from 'react-native-storage';
 
 export default function App() {
+
+  const storage = new Storage({
+    storageBackend: AsyncStorage,
+    defaultExpires: null,
+  });
+
+  const saveSpace = async () => {
+    storage.save({
+      key: 'space',
+      data: modalSelectingSpace
+    });
+  }
+
+  const saveFloor = async () => {
+    storage.save({
+      key: 'floor',
+      data: selectedModalMap
+    });
+  }
+
+  const saveTime = async () => {
+    storage.save({
+      key: 'time',
+      data: datetime
+    });
+  }
+
+  const loadData = async () => {
+    storage.load({key: 'space'})
+    .then(res => console.log(res));
+    storage.load({key: 'floor'})
+    .then(res => console.log(res));
+    storage.load({key: 'time'})
+    .then(res => console.log(res));
+  }
 
   const [selectedMap, setSelectedMap] = useState(2);
 
@@ -40,7 +77,6 @@ export default function App() {
 
   const closeModal = () => {
     setIsModalVisible(false);
-    console.log(modalSelectingSpace)
   }
 
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
@@ -69,7 +105,7 @@ export default function App() {
     return diffHourMinutes;
   }
 
-  const [modalSelectingSpace, setModalSelectingSpace] = useState()
+  const [modalSelectingSpace, setModalSelectingSpace] = useState();
 
   return (
     <View style={styles.container}>
@@ -96,7 +132,7 @@ export default function App() {
         </TouchableOpacity>
       </View>
       <View style={styles.parkingInformation}>
-        <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車場所：{parkingFloor}F {parkingSpace}</Text>
+        <Text style={{fontSize: 20, color: '#EEEEEE'}} onPress={loadData}>駐車場所：{parkingFloor}F {parkingSpace}</Text>
       </View>
 
       <Modal isVisible={isModalVisible} hasBackdrop={true}>
@@ -121,7 +157,7 @@ export default function App() {
             <TouchableOpacity onPress={closeModal} style={styles.modalButtonCancel}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>取消</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {setDatetime(newDatetime); closeModal()}} style={styles.modalButtonSubmit}>
+            <TouchableOpacity onPress={() => {setDatetime(newDatetime); closeModal(); saveSpace(); saveFloor(); saveTime();}} style={styles.modalButtonSubmit}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>更新</Text>
             </TouchableOpacity>
 
