@@ -14,7 +14,8 @@ export default function App() {
   useEffect(() => {
     storage.load({key: 'space'}).then(res => setParkingSpace(res));
     storage.load({key: 'floor'}).then(res => setParkingFloor(res));
-  })
+    storage.load({key: 'time'}).then(res => setDatetime(new Date(res)));
+  },[]);
 
   const storage = new Storage({
     storageBackend: AsyncStorage,
@@ -40,6 +41,13 @@ export default function App() {
       key: 'time',
       data: datetime
     });
+  }
+
+  const saveData = async () => {
+    setDatetime(newDatetime);
+    saveSpace();
+    saveFloor();
+    saveTime();
   }
 
   const [selectedMap, setSelectedMap] = useState(2);
@@ -107,7 +115,7 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.countHour}>
         <View style={styles.countHourTitle}>
-          <Text style={{fontSize: 20, color: '#EEEEEE'}} onPress={getElapsedTime}>駐車時間</Text>
+          <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車時間</Text>
         </View>
         <View style={styles.countHourMinutes}>
           <Text style={{fontSize: 40, color: '#EEEEEE'}}>
@@ -129,7 +137,6 @@ export default function App() {
       </View>
       <View style={styles.parkingInformation}>
         <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車場所：{parkingFloor}F {parkingSpace}</Text>
-        <Text style={{color: 'white'}}>TEST</Text>
       </View>
 
       <Modal isVisible={isModalVisible} hasBackdrop={true}>
@@ -154,7 +161,7 @@ export default function App() {
             <TouchableOpacity onPress={closeModal} style={styles.modalButtonCancel}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>取消</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {setDatetime(newDatetime); closeModal(); saveSpace(); saveFloor(); saveTime();}} style={styles.modalButtonSubmit}>
+            <TouchableOpacity onPress={() => {saveData(); closeModal();}} style={styles.modalButtonSubmit}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>更新</Text>
             </TouchableOpacity>
 
