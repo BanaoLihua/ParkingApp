@@ -17,6 +17,9 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.github.BanaoLihua.ParkingApp",
+      "buildNumber": "100",
+      "icon": "./assets/icon.png",
       "supportsTablet": true
     },
     "android": {

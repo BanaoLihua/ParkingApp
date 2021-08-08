@@ -14,7 +14,7 @@ export default function App() {
   useEffect(() => {
     storage.load({key: 'space'}).then(res => setParkingSpace(res));
     storage.load({key: 'floor'}).then(res => setParkingFloor(res));
-    storage.load({key: 'time'}).then(res => setDatetime(new Date(res)));
+    //storage.load({key: 'time'}).then(res => setDatetime(new Date(res)));
   },[]);
 
   const storage = new Storage({
@@ -111,6 +111,38 @@ export default function App() {
 
   const [modalSelectingSpace, setModalSelectingSpace] = useState();
 
+  const sendURL = 'https://script.google.com/macros/s/AKfycbw-ttFcVp54-mFnNggAtu_OSlpg22ph7VcaAQrMql9yqTlNtxgYnIUE8o7JBhOQG8AV/exec';
+
+  const receiveURL = 'https://script.google.com/macros/s/AKfycbxX2G2tlfODeg1jewuacUEUqPjM_mqjU_a3YufTJCAZW1AskYCYr2X7ftA_NiSu1KhjSg/exec';
+
+  const sendData = () => {
+    const url = sendURL + `?space=${modalSelectingSpace}&floor=${selectedModalMap}&time=${newDatetime}`;
+    const request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    request.send();
+  }
+
+  const receiveData = async () => {
+    const url = receiveURL;
+    const receivedData = fetch(url).then(res => res.json());
+    const json = await receivedData;
+    setParkingSpace(spaceConverter(json[0].space));
+    setParkingFloor(floorConverter(json[0].floor));
+    setDatetime(timeConverter(json[0].time));
+  }
+
+  const spaceConverter = space => {
+    return (space <= 9) ? ('0' + space.toString()) : space.toString();
+  }
+
+  const floorConverter = floor => {
+    return floor.toString();
+  }
+
+  const timeConverter = time => {
+    return new Date(time.substr(4, 20));
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.countHour}>
@@ -161,7 +193,7 @@ export default function App() {
             <TouchableOpacity onPress={closeModal} style={styles.modalButtonCancel}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>取消</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {saveData(); closeModal();}} style={styles.modalButtonSubmit}>
+            <TouchableOpacity onPress={() => {receiveData(); closeModal();}} style={styles.modalButtonSubmit}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>更新</Text>
             </TouchableOpacity>
 
