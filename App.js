@@ -8,7 +8,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export default function App() {
 
-  // 起動時に受信処理を行う
+  // 起動時にGASから受信処理
   useEffect(() => {
     receiveData();
   },[]);
@@ -21,11 +21,15 @@ export default function App() {
 
   const [datetime, setDatetime] = useState(new Date());
 
+  // ↓↓モーダル画面の変数、関数 START↓↓
+
   const [newDatetime, setNewDateTime] = useState(new Date());
 
   const [modalDatetime, setModalDatetime] = useState(fromDateToString(new Date()));
 
   const [selectedModalMap, setSelectedModalMap] = useState(2);
+
+  const [modalSelectingSpace, setModalSelectingSpace] = useState();
 
   function fromDateToString(datetime) {
     const month = 1 + datetime.getMonth();
@@ -62,6 +66,9 @@ export default function App() {
     closeDatePicker();
   }
 
+  // ↑↑モーダル画面の変数、関数 END↑↑
+
+  // 変数datetimeから経過時間をstringで返す関数
   const getElapsedTime = () => {
     const now = new Date();
     const diff = now - datetime;
@@ -72,8 +79,7 @@ export default function App() {
     return diffHourMinutes;
   }
 
-  const [modalSelectingSpace, setModalSelectingSpace] = useState();
-
+  // ↓↓API関連の変数、定数、関数 START↓↓
   const sendURL = 'https://script.google.com/macros/s/AKfycbw-ttFcVp54-mFnNggAtu_OSlpg22ph7VcaAQrMql9yqTlNtxgYnIUE8o7JBhOQG8AV/exec';
 
   const receiveURL = 'https://script.google.com/macros/s/AKfycbxX2G2tlfODeg1jewuacUEUqPjM_mqjU_a3YufTJCAZW1AskYCYr2X7ftA_NiSu1KhjSg/exec';
@@ -112,9 +118,13 @@ export default function App() {
     window.setTimeout(receiveData, 500)
     closeModal();
   }
+  // ↑↑API関連の変数、定数、関数 END↑↑
+
 
   return (
     <View style={styles.container}>
+
+      {/* 駐車後経過時間 */}
       <View style={styles.countHour}>
         <View style={styles.countHourTitle}>
           <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車時間</Text>
@@ -126,9 +136,11 @@ export default function App() {
         </View>
       </View>
 
+      {/* マップ */}
       {(selectedMap === 2) && <Map2nd parkingFloor={parkingFloor} parkingSpace={parkingSpace} />}
       {(selectedMap === 3) && <Map3rd parkingFloor={parkingFloor} parkingSpace={parkingSpace} />}
       
+      {/* マップ切替タブ */}
       <View style={styles.floorLevelTabWrapper}>
         <TouchableOpacity style={(selectedMap === 3) ? styles.levelTabSelected : styles.levelTab} onPress={() => {setSelectedMap(3)}}>
           <Text style={(selectedMap === 3) ? styles.levelTabTextSelected : styles.levelTabText}>3F</Text>
@@ -137,28 +149,36 @@ export default function App() {
           <Text style={(selectedMap === 2) ? styles.levelTabTextSelected : styles.levelTabText}>2F</Text>
         </TouchableOpacity>
       </View>
+
+      {/* 駐車場所情報 */}
       <View style={styles.parkingInformation}>
         <Text style={{fontSize: 20, color: '#EEEEEE'}}>駐車場所：{parkingFloor}F {parkingSpace}</Text>
       </View>
 
+      {/* モーダル画面 */}
       <Modal isVisible={isModalVisible} hasBackdrop={true}>
         <View style={styles.modalWrapper}>
+
+          {/* 時間設定 */}
           <View style={styles.modalParkingTime}>
             <Text style={styles.modalParkingTimeText}>{modalDatetime} <Icon name="edit" size={30} onPress={showDatePicker} /></Text>
           </View>
 
+          {/* マップ切替タブ */}
           <View style={styles.modalLevelTabWrapper}>
-              <TouchableOpacity style={(selectedModalMap === 3) ? styles.modalLevelTabSelected : styles.modalLevelTab} onPress={() => {setSelectedModalMap(3); setModalSelectingSpace()}}>
-                <Text style={(selectedModalMap === 3) ? styles.modalLevelTabTextSelected : styles.modalLevelTabText}>3F</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={(selectedModalMap === 2) ? styles.modalLevelTabSelected : styles.modalLevelTab} onPress={() => {setSelectedModalMap(2); setModalSelectingSpace()}}>
-                <Text style={(selectedModalMap === 2) ? styles.modalLevelTabTextSelected : styles.modalLevelTabText}>2F</Text>
-              </TouchableOpacity>
+            <TouchableOpacity style={(selectedModalMap === 3) ? styles.modalLevelTabSelected : styles.modalLevelTab} onPress={() => {setSelectedModalMap(3); setModalSelectingSpace()}}>
+              <Text style={(selectedModalMap === 3) ? styles.modalLevelTabTextSelected : styles.modalLevelTabText}>3F</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={(selectedModalMap === 2) ? styles.modalLevelTabSelected : styles.modalLevelTab} onPress={() => {setSelectedModalMap(2); setModalSelectingSpace()}}>
+              <Text style={(selectedModalMap === 2) ? styles.modalLevelTabTextSelected : styles.modalLevelTabText}>2F</Text>
+            </TouchableOpacity>
           </View>
           
+          {/* マップ */}
           {(selectedModalMap === 2) && <Map2nd modal={true} setSelectingSpace={setModalSelectingSpace} selectingSpace={modalSelectingSpace} />}
           {(selectedModalMap === 3) && <Map3rd modal={true} setSelectingSpace={setModalSelectingSpace} selectingSpace={modalSelectingSpace} />}
 
+          {/* ボタン */}
           <View style={styles.modalButtonsWrapper}>
             <TouchableOpacity onPress={closeModal} style={styles.modalButtonCancel}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>取消</Text>
@@ -167,6 +187,7 @@ export default function App() {
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>更新</Text>
             </TouchableOpacity>
 
+            {/* 時間設定押下時に表れるモーダル */}
             <DateTimePickerModal
               isVisible={isDatePickerVisible}
               mode="datetime"
