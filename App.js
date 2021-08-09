@@ -9,6 +9,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export default function App() {
 
+  // 起動時に受信処理を行う
   useEffect(() => {
     receiveData();
   },[]);
@@ -106,9 +107,10 @@ export default function App() {
     return new Date(time.substr(4, 20));
   }
 
+  // "更新"押下時の処理。送信処理がGoogleSpreadSheetに反映されてから実行したいため、受信処理に1秒遅延を加えている
   const onPressReset = () => {
     sendData();
-    window.setTimeout(receiveData, 1000)
+    window.setTimeout(receiveData, 500)
     closeModal();
   }
 

@@ -35,7 +35,7 @@ export default function Map3rd(props) {
         </View>
         <View style={styles.mapRow}>
         {/* 3行目 */}
-          <Text onPress={() => {onPressSpace('05')}} style={((props.parkingFloor === '3') && (props.parkingSpace === '05') || (props.selectingSpace === '05')) ? styles.spaceSelected : styles.space}>27</Text>
+          <Text onPress={() => {onPressSpace('27')}} style={((props.parkingFloor === '3') && (props.parkingSpace === '27') || (props.selectingSpace === '27')) ? styles.spaceSelected : styles.space}>27</Text>
           <Text style={styles.spaceHidden}></Text>
           <Text style={styles.spaceHidden}></Text>
           <Text onPress={() => {onPressSpace('16')}} style={((props.parkingFloor === '3') && (props.parkingSpace === '16') || (props.selectingSpace === '16')) ? styles.spaceSelected : styles.space}>16</Text>
