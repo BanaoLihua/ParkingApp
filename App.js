@@ -6,49 +6,12 @@ import Modal from 'react-native-modal';
 import Map2nd from './src/map2nd';
 import Map3rd from './src/map3rd';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Storage from 'react-native-storage';
 
 export default function App() {
 
   useEffect(() => {
-    storage.load({key: 'space'}).then(res => setParkingSpace(res));
-    storage.load({key: 'floor'}).then(res => setParkingFloor(res));
-    //storage.load({key: 'time'}).then(res => setDatetime(new Date(res)));
+    receiveData();
   },[]);
-
-  const storage = new Storage({
-    storageBackend: AsyncStorage,
-    defaultExpires: null,
-  });
-
-  const saveSpace = async () => {
-    storage.save({
-      key: 'space',
-      data: modalSelectingSpace
-    });
-  }
-
-  const saveFloor = async () => {
-    storage.save({
-      key: 'floor',
-      data: selectedModalMap.toString()
-    });
-  }
-
-  const saveTime = async () => {
-    storage.save({
-      key: 'time',
-      data: datetime
-    });
-  }
-
-  const saveData = async () => {
-    setDatetime(newDatetime);
-    saveSpace();
-    saveFloor();
-    saveTime();
-  }
 
   const [selectedMap, setSelectedMap] = useState(2);
 
@@ -143,6 +106,12 @@ export default function App() {
     return new Date(time.substr(4, 20));
   }
 
+  const onPressReset = () => {
+    sendData();
+    window.setTimeout(receiveData, 1000)
+    closeModal();
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.countHour}>
@@ -193,7 +162,7 @@ export default function App() {
             <TouchableOpacity onPress={closeModal} style={styles.modalButtonCancel}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>取消</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {receiveData(); closeModal();}} style={styles.modalButtonSubmit}>
+            <TouchableOpacity onPress={onPressReset} style={styles.modalButtonSubmit}>
               <Text style={{color: '#EEEEEE', fontSize: 20,}}>更新</Text>
             </TouchableOpacity>
 
