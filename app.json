@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "parkingApp",
+    "name": "駐車管理",
     "slug": "parkingApp",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -18,7 +18,7 @@
     ],
     "ios": {
       "bundleIdentifier": "com.github.BanaoLihua.ParkingApp",
-      "buildNumber": "100",
+      "buildNumber": "101",
       "icon": "./assets/icon.png",
       "supportsTablet": true
     },
