@@ -5,6 +5,7 @@ import Modal from 'react-native-modal';
 import Map2nd from './src/map2nd';
 import Map3rd from './src/map3rd';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { Appearance } from 'react-native-appearance';
 
 export default function App() {
 
@@ -64,6 +65,16 @@ export default function App() {
     setModalDatetime(fromDateToString(datetime));
     setNewDateTime(datetime);
     closeDatePicker();
+  }
+
+  const isDarkMode = () => {
+    const colorMode = Appearance.getColorScheme();
+    if(colorMode === 'dark'){
+      return true;
+    }
+    else if(colorMode === 'light') {
+      return false;
+    }
   }
 
   // ↑↑モーダル画面の変数、関数 END↑↑
@@ -193,7 +204,7 @@ export default function App() {
               mode="datetime"
               onConfirm={handleConfirm}
               onCancel={closeDatePicker}
-              isDarkModeEnabled={true}
+              isDarkModeEnabled={isDarkMode()}
               cancelTextIOS={'取消'}
               confirmTextIOS={'確定'}
             />
