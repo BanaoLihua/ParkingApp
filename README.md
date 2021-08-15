@@ -4,7 +4,7 @@ You can check parking elapsed time and where the car is. (Online environment is 
  
 # DEMO
 
-<img src="https://github.com/BanaoLihua/ParkingApp/blob/main/demo/01.PNG" width=400> <img src="https://github.com/BanaoLihua/ParkingApp/blob/main/demo/02.PNG" width=400>
+<img src="https://github.com/BanaoLihua/ParkingApp/blob/main/demo/01.png" width=400> <img src="https://github.com/BanaoLihua/ParkingApp/blob/main/demo/02.png" width=400>
  
 # Requirement
  
@@ -19,7 +19,7 @@ You can install by using testflight. I send testflight code after you cantact to
 
 Android user:
 
-Download apk file from [here]()
+Download apk file from [here](https://www.dropbox.com/s/qum31gifcese0ta/parkingApp-960c412b6dec4703bd10171f595a13f8-signed.apk?dl=0)
 
 
 # Contact
